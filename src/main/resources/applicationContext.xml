@@ -95,4 +95,10 @@
     <!-- 对dataSource 数据源进行事务管理 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
           p:dataSource-ref="dataSource"/>
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="i18n.Message"/>
+        <!--开发时将cacheSeconds调整为0，则每次访问springMessage都会更新，不需要重启。-->
+        <property name="cacheSeconds" value="-1"/>
+        <property name="defaultEncoding" value="utf-8"/>
+    </bean>
 </beans>
